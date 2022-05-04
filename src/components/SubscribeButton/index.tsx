@@ -10,7 +10,7 @@ interface SubscribeButtonProps {
 export function SubscribeButton({priceId}: SubscribeButtonProps) {
   const { data: session } = useSession();
   
-  async function handleScubscribe() {
+  async function handleSubscribe() {
     if (!session) {
       signIn('github')
       return;
@@ -23,7 +23,7 @@ export function SubscribeButton({priceId}: SubscribeButtonProps) {
 
       const stripe = await getStripeJs()
 
-      await stripe.redirectToCheckout({sessionId})
+      await stripe.redirectToCheckout({ sessionId })
     } catch (err) {
       alert(err.message)
     }
@@ -32,7 +32,7 @@ export function SubscribeButton({priceId}: SubscribeButtonProps) {
   return (
     <button type="button"
     className={styles.subscribeButton}
-    onClick={handleScubscribe}>
+    onClick={handleSubscribe}>
       Subscribe now
     </button>
   );
