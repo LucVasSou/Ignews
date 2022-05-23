@@ -18,7 +18,7 @@ export default NextAuth({
     })
   ],
   callbacks: {
-    async signIn(user) {
+    async signIn({ user }) {
       const {email} = user
 
       try{
@@ -44,9 +44,10 @@ export default NextAuth({
             )
           )
         )
-
+                
         return true
-      } catch {
+      } catch(err) {
+        console.log(err)
         return false
       }
     }
